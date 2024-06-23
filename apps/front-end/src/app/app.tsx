@@ -1,9 +1,11 @@
-import NxWelcome from './nx-welcome';
+import { Outlet } from 'react-router-dom';
+// import NxWelcome from './nx-welcome';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="front-end" />
+      {/* <NxWelcome title="front-end" /> */}
+      <Outlet />
     </div>
   );
 }

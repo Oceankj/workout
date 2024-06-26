@@ -1,10 +1,39 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../database';
 
-class User extends Model {}
+export interface UserAttributes {
+  id: number;
+  email: string;
+  password: string;
+  name?: string;
+  isDeleted?: boolean;
+}
+
+export interface UserCreationAttributes
+  extends Optional<UserAttributes, 'id'> {}
+
+class User
+  extends Model<UserAttributes, UserCreationAttributes>
+  implements UserAttributes
+{
+  public id!: number;
+  public email!: string;
+  public password!: string;
+  public name!: string;
+  public isDeleted!: boolean;
+
+  // timestamps!
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+}
 
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     // Model attributes are defined here
     email: {
       type: DataTypes.STRING,

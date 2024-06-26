@@ -1,14 +1,5 @@
 import User from '../model/user.model';
-import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
-
-interface UserAttributes {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-}
-
-interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
+import { UserAttributes, UserCreationAttributes } from '../model/user.model';
 
 export const createUser = async (
   userData: Omit<UserCreationAttributes, 'id'>

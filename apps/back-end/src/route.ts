@@ -6,6 +6,3 @@ const router = express.Router();
 router.use('/auth', authController);
 
 export default router;
-
-// TODO response pipe
-// TODO

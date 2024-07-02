@@ -1,32 +1,17 @@
-:root {
-  --btn-primary-light: #8abdff;
-  --btn-primary: #6d5dfc;
-  --btn-primary-dark: #5b0eeb;
-
-  --btn-white: #ffffff;
-  --btn-greyLight-1: #e4ebf5;
-  --btn-greyLight-2: #c8d0e7;
-  --btn-greyLight-3: #bec8e4;
-  --btn-greyDark: #9baacf;
-
-  --btn-shadow: 0.3rem 0.3rem 0.6rem var(--btn-greyLight-2),
-    -0.2rem -0.2rem 0.5rem var(--btn-white);
-  --btn-inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--btn-greyLight-2),
-    inset -0.2rem -0.2rem 0.5rem var(--btn-white);
-}
+@import url('../style/variable.css');
 
 .btn {
-  box-shadow: var(--btn-shadow);
+  box-shadow: var(--shadow);
   transition: 0.3s ease;
 }
 .btn__primary {
-  box-shadow: inset 0.2rem 0.2rem 1rem var(--btn-primary-light),
-    inset -0.2rem -0.2rem 1rem var(--btn-primary-dark), var(--btn-shadow);
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light),
+    inset -0.2rem -0.2rem 1rem var(--primary-dark), var(--shadow);
 }
 .btn__primary:active {
-  box-shadow: inset 0.2rem 0.2rem 1rem var(--btn-primary-dark),
-    inset -0.2rem -0.2rem 1rem var(--btn-primary-light);
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark),
+    inset -0.2rem -0.2rem 1rem var(--primary-light);
 }
 .btn__secondary:active {
-  box-shadow: var(--btn-inner-shadow);
+  box-shadow: var(--inner-shadow);
 }

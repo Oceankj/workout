@@ -2,7 +2,6 @@ import { Link, Outlet } from 'react-router-dom';
 import { Button } from './components/button';
 import { useState } from 'react';
 import { Loader } from './components/loader';
-// import { Button } from '@headlessui/react';
 
 export function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);

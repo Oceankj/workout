@@ -8,7 +8,7 @@
     "types": ["vite/client"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["apps/front-end"]
+      "@/*": ["./src/app/*"]
     }
   },
   "files": [],

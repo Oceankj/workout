@@ -15,3 +15,8 @@ export const get = async (key: string) => {
     if (!result) return null;
     return result.value;
 };
+
+export const remove = async (key: string) => {
+    const result = await Cache.destroy({ where: { key } });
+    return result > 0;
+};

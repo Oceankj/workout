@@ -6,6 +6,7 @@ const authController = express.Router();
 
 authController.post('/register', authService.register);
 authController.post('/login', authService.login);
+authController.get('/logout', authService.logout);
 authController.use('/token', refreshAuthorizationMiddleware);
 authController.get('/token', authService.getToken);
 

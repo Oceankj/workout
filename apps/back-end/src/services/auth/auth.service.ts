@@ -68,3 +68,18 @@ const generateTokens = (data: Record<string, any>) => {
     const refreshToken = jwt.sign(payload, refreshSecret, { expiresIn: '7d' });
     return { accessToken, refreshToken };
 };
+
+export const logout = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { id } = req.user as jwt.JwtPayload;
+
+        const user = await userRepository.getUserById(id);
+        if (!user || user.isDeleted) throw new NotFoundException('User Not Found!');
+
+        await cacheRepository.remove(`user:token:${user.id}`);
+
+        res.status(200).json();
+    } catch (error) {
+        next(error);
+    }
+};

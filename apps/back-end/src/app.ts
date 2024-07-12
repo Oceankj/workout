@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(authorizationMiddleware);
 app.use(responseFormatterMiddleware);
-app.use(router);
+app.use('/api', router);
 app.use(errorHandlerMiddleware);
 
 export default app;

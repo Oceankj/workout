@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
 import { UnauthorizedException } from 'src/common/exception/http.exception';
 
-const excludedPaths = ['/auth/login', '/auth/register', '/auth/token']; // 不需要授權的路徑
+const excludedPaths = ['/api/auth/login', '/api/auth/register', '/api/auth/token']; // 不需要授權的路徑
 
 const authorizationMiddleware = async (request: Request, response: Response, next: NextFunction) => {
     try {

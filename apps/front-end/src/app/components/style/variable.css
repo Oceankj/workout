@@ -3,11 +3,11 @@
   --primary: #6d5dfc;
   --primary-dark: #5b0eeb;
 
-  --white: #ffffff;
-  --greyLight-1: #e4ebf5;
-  --greyLight-2: #c8d0e7;
-  --greyLight-3: #bec8e4;
-  --greyDark: #9baacf;
+  --white: #ffffff20;
+  --greyLight-1: #e4ebf520;
+  --greyLight-2: #c8d0e720;
+  --greyLight-3: #bec8e420;
+  --greyDark: #9baacf20;
 
   --shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
     -0.2rem -0.2rem 0.5rem var(--white);

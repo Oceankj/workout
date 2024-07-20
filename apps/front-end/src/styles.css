@@ -1,4 +1,13 @@
 @tailwind base;
+@layer base {
+  @font-face {
+    font-family: jFopenHunInn;
+    src: url(./assets/jf-openhuninn-2.0.ttf);
+  }
+  body {
+    @apply font-[jFopenHunInn]
+  }
+}
 @tailwind components;
 @tailwind utilities;
 /* You can add global styles to this file, and also import other style files */

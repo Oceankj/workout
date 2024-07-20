@@ -1,10 +1,10 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Button } from './components/button';
-import { useState } from 'react';
 import { Loader } from './components/loader';
+import { useLoader } from './hooks/useLoader';
 
 export function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { isLoading, createLoader, resetAll } = useLoader();
 
   return (
     <>
@@ -18,7 +18,10 @@ export function App() {
           </Link>
           <Button
             layout="secondary"
-            onClick={() => setIsLoading((isLoading) => !isLoading)}
+            onClick={() => {
+              const loader = createLoader();
+              // setTimeout(() => loader.complete(), 3000);
+            }}
           >
             Start Loading
           </Button>

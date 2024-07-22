@@ -4,8 +4,10 @@
     font-family: jFopenHunInn;
     src: url(./assets/jf-openhuninn-2.0.ttf);
   }
-  body {
-    @apply font-[jFopenHunInn]
+  html,
+  body,
+  #root {
+    @apply h-screen w-full font-[jFopenHunInn] fixed;
   }
 }
 @tailwind components;

@@ -8,7 +8,8 @@ export function App() {
 
   return (
     <>
-      <div>
+      <Loader isLoading={isLoading} />
+      <div className='h-full bg-gradient-to-b from-indigo-200 to-red-100'>
         <nav className="border-b border-solid border-gray-300 flex flex-wrap items-center justify-center py-2 space-x-2 space-y-2">
           <Link className="outline-none" to={''}>
             <Button>Home Page</Button>
@@ -20,7 +21,7 @@ export function App() {
             layout="secondary"
             onClick={() => {
               const loader = createLoader();
-              // setTimeout(() => loader.complete(), 3000);
+              setTimeout(() => loader.complete(), 3000);
             }}
           >
             Start Loading
@@ -28,7 +29,6 @@ export function App() {
         </nav>
         <Outlet />
       </div>
-      <Loader isLoading={isLoading} />
     </>
   );
 }

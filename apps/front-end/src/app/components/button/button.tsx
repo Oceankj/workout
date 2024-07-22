@@ -3,7 +3,7 @@ import type { ButtonProps as HLButtonProps } from '@headlessui/react';
 import { Button as HLButton } from '@headlessui/react';
 import clsx from 'clsx';
 
-interface ButtonProps extends HLButtonProps {
+export interface ButtonProps extends HLButtonProps {
   layout?: 'primary' | 'secondary';
 }
 export const Button = ({

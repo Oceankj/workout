@@ -1,0 +1,17 @@
+@import url('../style/variable.css');
+
+.btn {
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+}
+.btn__primary {
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light),
+    inset -0.2rem -0.2rem 1rem var(--primary-dark), var(--shadow);
+}
+.btn__primary:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark),
+    inset -0.2rem -0.2rem 1rem var(--primary-light);
+}
+.btn__secondary:active {
+  box-shadow: var(--inner-shadow);
+}

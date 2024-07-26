@@ -1,7 +1,8 @@
 import express from 'express';
+import authController from 'src/controllers/auth.controller';
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.send('Hello world!'));
+router.use('/auth', authController);
 
 export default router;

@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "sequelize": "ts-node -r tsconfig-paths/register ./node_modules/.bin/sequelize"
+    "sequelize": "ts-node -r tsconfig-paths/register ./node_modules/.bin/sequelize",
+    "nx":"nx",
+    "serve:all": "nx run-many -t serve -p back-end front-end"
   },
   "private": true,
   "dependencies": {

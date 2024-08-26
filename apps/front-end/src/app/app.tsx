@@ -2,12 +2,13 @@ import { Link, Outlet } from 'react-router-dom';
 import { Button } from './components/button';
 import { Loader } from './components/loader';
 import { useLoader } from './hooks/useLoader';
+import { AppConfig } from './appConfig';
 
 export function App() {
   const { isLoading, createLoader, resetAll } = useLoader();
 
   return (
-    <>
+    <AppConfig>
       <Loader isLoading={isLoading} />
       <div className='h-full bg-gradient-to-b from-indigo-200 to-red-100'>
         <nav className="border-b border-solid border-gray-300 flex flex-wrap items-center justify-center py-2 space-x-2 space-y-2">
@@ -29,7 +30,7 @@ export function App() {
         </nav>
         <Outlet />
       </div>
-    </>
+    </AppConfig>
   );
 }
 

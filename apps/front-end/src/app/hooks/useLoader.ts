@@ -1,5 +1,4 @@
-import { useEffect, useState, useTransition } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useState } from 'react';
 import { create } from 'zustand';
 
 type TaskId = string;
@@ -49,8 +48,8 @@ export const useLoader = () => {
       loderAction,
     })
   );
-
   const isLoading = useIsLoading(loadingTasks);
+  
   return {
     isLoading,
     createLoader: (key?: string) => {

@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './app';
-import { ErrorPage } from '@/pages/error-page';
-import { LoginPage } from '@/pages/login-page';
+import { ErrorPage } from '@/pages/errorPage';
+import { LoginPage } from '@/pages/loginPage';
 
 export const router = createBrowserRouter([
   {

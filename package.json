@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "sequelize": "ts-node -r tsconfig-paths/register ./node_modules/.bin/sequelize",
-    "nx":"nx",
+    "nx": "nx",
     "serve:all": "nx run-many -t serve -p back-end front-end"
   },
   "private": true,
@@ -24,8 +24,9 @@
     "react-router-dom": "^6.23.1",
     "sequelize": "^6.37.3",
     "tslib": "^2.3.0",
-    "zustand": "^4.5.4",
-    "zod": "^3.23.8"
+    "vest": "^5.4.1",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@nx/eslint": "19.3.1",

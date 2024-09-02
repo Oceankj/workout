@@ -1,11 +1,13 @@
 import React from 'react';
-import { useAxiosConfig } from './hooks/useAxiosConfig';
+import { useAxiosInterceptors } from './hooks/useAxiosInterceptors';
+import { useAuth } from './hooks/useAuth/useAuth';
 
 interface AppConfigProps {
     children: React.ReactNode;
 }
 
 export const AppConfig = ({ children }: AppConfigProps) => {
-    useAxiosConfig();
+    useAxiosInterceptors();
+    useAuth().forRoot();
     return children;
 };

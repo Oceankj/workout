@@ -5,7 +5,7 @@ import { useLoader } from './hooks/useLoader';
 import { AppConfig } from './appConfig';
 
 export function App() {
-  const { isLoading, createLoader, resetAll } = useLoader();
+  const { isLoading, createLoader } = useLoader();
 
   return (
     <AppConfig>

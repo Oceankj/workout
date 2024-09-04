@@ -1,4 +1,4 @@
-import './button.css';
+import './Button.css';
 import type { ButtonProps as HLButtonProps } from '@headlessui/react';
 import { Button as HLButton } from '@headlessui/react';
 import clsx from 'clsx';

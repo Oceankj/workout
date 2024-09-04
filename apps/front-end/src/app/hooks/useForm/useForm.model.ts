@@ -16,4 +16,5 @@ export interface UseFormProps<FormDataType, SuiteType> {
     initialState: FormDataType;
     suite: SuiteType;
     onSubmit?: (data: FormDataType) => void;
+    validateDelay?:number
 }

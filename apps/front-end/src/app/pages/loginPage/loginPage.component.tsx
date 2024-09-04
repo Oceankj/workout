@@ -3,10 +3,12 @@ import { Input } from '@/components/input';
 import { Description, Field, Fieldset, Label, Legend } from '@headlessui/react';
 import { Button } from '@/components/button';
 import { useAuth } from '@/hooks/useAuth/useAuth';
-import { useForm } from '@/hooks/useForm/useForm';
+import { useForm, Suite } from '@/hooks/useForm/useForm';
 import { create } from 'vest';
 import { LoginForm, LoginFormData } from './loginPage.models';
 import { useEffect } from 'react';
+import { suite } from './validator';
+import { FieldHint } from '@/components/field';
 
 export const LoginPage = () => {
     const { register, login, logout } = useAuth();
@@ -15,19 +17,16 @@ export const LoginPage = () => {
             [LoginForm.account]: '',
             [LoginForm.password]: '',
         },
-        suite: create((data) => {
-            if (!data[LoginForm.account]) {
-                return ['Account is required'];
-            }
-            if (!data[LoginForm.password]) {
-                return ['Password is required'];
-            }
-        }),
+        suite: suite,
     });
 
     useEffect(() => {
-        console.log(form.validation);
+        console.log(form.validation?.errors);
     }, [form.validation]);
+
+    useEffect(() => {
+        console.log(form.isSubmitted);
+    }, [form.isSubmitted]);
 
     return (
         <div className="flex flex-col items-center">
@@ -46,6 +45,12 @@ export const LoginPage = () => {
                                 form.setValue(LoginForm.account, e.target.value)
                             }
                         />
+                        <FieldHint
+                            isVisible={form.isSubmitted}
+                            message={form.validation?.getError(
+                                LoginForm.account,
+                            )}
+                        />
                     </Field>
                     <Field>
                         <Label className="text-sm/6 font-medium text-gray-800">
@@ -60,8 +65,17 @@ export const LoginPage = () => {
                                 )
                             }
                         />
+                        <FieldHint
+                            isVisible={form.isSubmitted}
+                            message={form.validation?.getError(
+                                LoginForm.password,
+                            )}
+                        />
                     </Field>
                 </Fieldset>
+                <Button className="mt-4 w-full" onClick={() => form.submit()}>
+                    Submit
+                </Button>
             </div>
         </div>
     );

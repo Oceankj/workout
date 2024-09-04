@@ -43,7 +43,7 @@ export const useAuth = () => {
     } = useAuthStore();
 
     const forRoot = useCallback(() => {
-        if (isInit) throw new Error('useAuth().forRoot() must be called only once');
+        if (isInit) return
         const accessTokenFromLocalStorage = getItem<string>(
             AuthTokenKey.AccessToken,
         );
@@ -56,7 +56,7 @@ export const useAuth = () => {
             setRefreshToken(refreshTokenFromLocalStorage);
         }
         setIsInit(true);
-    }, [getItem, setAccessToken, setIsLoggedIn, setRefreshToken]);
+    }, [getItem, setAccessToken, setIsInit, setIsLoggedIn, setRefreshToken]);
 
     const updateTokenState = ({
         newAccessToken,

@@ -1,10 +1,12 @@
-import { useState, useCallback, useMemo, useTransition } from 'react';
+import { useState, useCallback, useTransition, useEffect } from 'react';
 import {
     IsTouchedObject,
     Suite,
     UseFormProps,
     FormData,
 } from './useForm.model';
+import { useDebouncedCallback } from 'use-debounce';
+import { SuiteRunResult } from 'vest';
 
 export const useForm = <
     FormDataType extends FormData,
@@ -13,6 +15,7 @@ export const useForm = <
     initialState,
     suite,
     onSubmit,
+    validateDelay = 300,
 }: UseFormProps<FormDataType, SuiteType>) => {
     const initialIsTouchedObject = Object.keys(initialState).reduce(
         (acc, key) => {
@@ -30,7 +33,17 @@ export const useForm = <
     const [isDirty, setIsDirty] = useState<boolean>(false);
     const [isVerifying, startTransition] = useTransition();
 
-    const validation = useMemo(() => suite(formData), [formData, suite]);
+    const [validation, setValidation] =
+        useState<SuiteRunResult<string, string>>();
+    const debouncedSetValidate = useDebouncedCallback(
+        (formData) => {
+                console.log('result',suite(formData))
+            return setValidation(suite(formData))},
+        validateDelay,
+    );
+    useEffect(() => {
+        debouncedSetValidate(formData);
+    }, [debouncedSetValidate, formData]);
 
     const handleSetValue = useCallback(
         (
@@ -57,11 +70,12 @@ export const useForm = <
     }, [initialIsTouchedObject, initialState]);
 
     const handleSubmit = useCallback(() => {
-        if (validation.isValid()) {
+        setIsSubmitted(true);
+        setValidation(suite(formData))
+        if (validation?.isValid()) {
             onSubmit?.(formData);
-            setIsSubmitted(true);
         }
-    }, [validation, onSubmit, formData]);
+    }, [suite, formData, validation, onSubmit]);
 
     return {
         isVerifying,

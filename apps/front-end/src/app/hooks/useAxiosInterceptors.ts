@@ -2,8 +2,10 @@ import axios from 'axios';
 import { useAuth } from './useAuth/useAuth';
 
 export const useAxiosInterceptors = () => {
-    axios.defaults.baseURL =
-        process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+    // console.log(process)
+
+    // axios.defaults.baseURL =
+    //     process.env.APP_PORT || 'http://localhost:3000/api';
 
     const { accessToken, loginByToken } = useAuth();
 

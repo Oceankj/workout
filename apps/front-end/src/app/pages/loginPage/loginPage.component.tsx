@@ -7,6 +7,10 @@ import { useForm } from '@/hooks/useForm/useForm';
 import { FieldHint } from '@/components/field';
 import { LoginForm, LoginFormData } from './loginPage.models';
 import { suite } from './validator';
+import { useDialog } from '@/hooks/useDialog/useDialog';
+import { RegisterDialog } from './components/RegisterDialog';
+
+const DIALOG_ID = 'registerDialog';
 
 export const LoginPage = () => {
     const { register, login, logout } = useAuth();
@@ -17,6 +21,11 @@ export const LoginPage = () => {
         },
         suite: suite,
     });
+
+    const { open: openRegisterDialog } = useDialog(
+        DIALOG_ID,
+        <RegisterDialog />,
+    );
 
     useEffect(() => {
         console.log(form.validation?.errors);
@@ -73,6 +82,12 @@ export const LoginPage = () => {
                 </Fieldset>
                 <Button className="mt-4 w-full" onClick={() => form.submit()}>
                     Submit
+                </Button>
+                <Button
+                    layout="secondary"
+                    className="mt-4 w-full"
+                    onClick={() => openRegisterDialog()}>
+                    Register
                 </Button>
             </div>
         </div>

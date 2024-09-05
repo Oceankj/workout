@@ -1,15 +1,13 @@
-import { Link, Outlet } from 'react-router-dom';
-import { Button } from './components/button';
+import { Outlet } from 'react-router-dom';
 import { Loader } from './components/loader';
-import { useLoader } from './hooks/useLoader';
 import { AppConfig } from './appConfig';
+import { DialogContainer } from './components/dialog';
 
 export function App() {
-    const { isLoading, createLoader } = useLoader();
-
     return (
         <AppConfig>
-            <Loader isLoading={isLoading} />
+            <Loader />
+            <DialogContainer />
             <div className="h-full bg-gradient-to-b from-indigo-200 to-red-100">
                 {/* <nav className="border-b border-solid border-gray-300 flex flex-wrap items-center justify-center py-2 space-x-2">
             <Link className="outline-none" to={''}>

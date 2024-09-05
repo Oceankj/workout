@@ -1,24 +1,30 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 interface DialogStore {
-    dialogs: { [key: string]: boolean }; // Dialog IDs mapped to open/close states
-    openDialog: (id: string) => void;
-    closeDialog: (id: string) => void;
+    dialogs: [string, React.ReactNode][];
+    isKeyExist: (key: string) => boolean;
+    isDialogOpen: (key: string) => boolean;
+    openDialog: (key: string, element: React.ReactNode) => void;
+    closeDialog: (key: string) => void;
     closeAllDialogs: () => void;
 }
 
-export const useDialogStore = create<DialogStore>((set) => ({
-    dialogs: {},
-    openDialog: (id: string) =>
+export const useDialogStore = create<DialogStore>((set, get) => ({
+    dialogs: [],
+    isKeyExist: (key) =>
+        get().dialogs.some(([currentKey]) => currentKey === key),
+    isDialogOpen: (key) =>
+        !!get().dialogs.find(([currentKey]) => currentKey === key),
+    openDialog: (key, element) =>
         set((state) => ({
-            dialogs: { ...state.dialogs, [id]: true },
+            dialogs: [...state.dialogs, [key, element]],
         })),
-    closeDialog: (id: string) =>
+    closeDialog: (key) =>
         set((state) => ({
-            dialogs: { ...state.dialogs, [id]: false },
+            dialogs: state.dialogs.filter(([currentKey]) => currentKey !== key),
         })),
     closeAllDialogs: () =>
         set(() => ({
-            dialogs: {},
+            dialogs: [],
         })),
 }));

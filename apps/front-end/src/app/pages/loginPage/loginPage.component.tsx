@@ -1,14 +1,12 @@
-import clsx from 'clsx';
+import { useEffect } from 'react';
 import { Input } from '@/components/input';
-import { Description, Field, Fieldset, Label, Legend } from '@headlessui/react';
+import { Field, Fieldset, Label, Legend } from '@headlessui/react';
 import { Button } from '@/components/button';
 import { useAuth } from '@/hooks/useAuth/useAuth';
-import { useForm, Suite } from '@/hooks/useForm/useForm';
-import { create } from 'vest';
-import { LoginForm, LoginFormData } from './loginPage.models';
-import { useEffect } from 'react';
-import { suite } from './validator';
+import { useForm } from '@/hooks/useForm/useForm';
 import { FieldHint } from '@/components/field';
+import { LoginForm, LoginFormData } from './loginPage.models';
+import { suite } from './validator';
 
 export const LoginPage = () => {
     const { register, login, logout } = useAuth();
@@ -29,7 +27,7 @@ export const LoginPage = () => {
     }, [form.isSubmitted]);
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center h-full justify-center">
             <div className="w-full max-w-lg px-4">
                 <Fieldset className="space-y-6 rounded-xl bg-white/30 p-6 sm:p-10">
                     <Legend className="text-lg font-semibold text-gray-800">

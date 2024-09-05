@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 interface FieldHintProps {
     isVisible: boolean;
-    message: string;
+    message?: string;
 }
 
 export const FieldHint = ({ isVisible, message }: FieldHintProps) => {

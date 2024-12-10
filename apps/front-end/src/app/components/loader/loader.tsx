@@ -1,11 +1,10 @@
+import { useLoader } from '@/hooks/useLoader';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 
-interface LoaderProps {
-  isLoading: boolean;
-}
+export const Loader = () => {
+  const { isLoading } = useLoader();
 
-export const Loader = ({ isLoading }: LoaderProps) => {
   const waveClassName =
     'absolute opacity-5 w-16 h-16 rounded-full z-10 bg-gradient-to-br from-[#a5b8ee] to-[#d8afe6] shadow-[0.4rem_0.4rem_0.8rem_#c8d0e7,-0.4rem_-0.4rem_0.8rem_#ffffff] z-20';
 
